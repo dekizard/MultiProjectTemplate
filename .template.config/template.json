@@ -1,0 +1,55 @@
+{
+  "author": "Dejan Sinik",
+  "classifications": [ "Demo app" ], 
+  "name": "Demo application",
+  "identity": "DemoApp",         
+  "shortName": "demoapp",                 
+  "tags": {
+    "language": "C#"
+  },
+  "sourceName": "MultiProjectTemplate", //this value will be replaced for app name specified next to -n command
+  "sources": [
+    {
+     "modifiers": [
+	 {
+          "exclude": [ 	
+            ".vs/**/*",
+            "**/bin/**",
+            "**/obj/**",
+            ".template.config/*"
+          ]
+	 },
+	 {
+	  "condition": "(!service)",
+          "exclude": [ 		// Exclude temp files for Service project                   
+			"MultiProjectTemplate.Service/**",
+			"MultiProjectTemplate.Web/MultiProjectTemplate.Web.csprojservice",
+			"MultiProjectTemplate.slnservice"
+          ]
+	  },
+	  {
+	   "condition": "(service)",
+           "exclude": [ 		           
+			"MultiProjectTemplate.Web/MultiProjectTemplate.Web.csproj",
+			"MultiProjectTemplate.sln"
+          ],
+		  "rename": {			
+			"MultiProjectTemplate.Web/MultiProjectTemplate.Web.csprojservice":
+			"MultiProjectTemplate.Web/MultiProjectTemplate.Web.csproj",
+			"MultiProjectTemplate.slnservice":
+			"MultiProjectTemplate.sln"
+		  }
+       }
+      ]
+     }
+  ],
+  "preferNameDirectory":"true",
+  "symbols":{
+        "service": {
+            "type": "parameter",
+			"dataType": "boolean",
+			"description": "Include Service project in in App",
+            "defaultValue": "false"
+        }
+   }
+}
