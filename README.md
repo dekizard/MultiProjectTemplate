@@ -1,4 +1,4 @@
-# MultiProjectTemplate
+# Multi project template
 Create multi-project template in .NET Core 3.1
 
 This project helps to quickly create specific Api-s for your organization.
